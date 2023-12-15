@@ -1,0 +1,61 @@
+/* :root{
+    --main-color: #009; 
+    --fs: 18 px;
+    --main-border : 4px solid #000 ;
+} */
+body{
+    background-color: #F7ECDE;
+}
+h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    font-weight: 500;
+    margin: auto;
+    width: fit-content;
+    background: linear-gradient(to top ,#FEC260 0% 30%,  #F7ECDE 30% 100%);
+    transition: all 1s ease;
+}
+h1:hover {
+    background: linear-gradient(to top ,#FEC260 0% 60%,  #F7ECDE 60% 100%);
+}
+
+.home-cption{
+    font-family: 'PT Sans Caption', sans-serif;
+    border-top: 2px dotted black;
+    border-bottom: 2px dotted black;
+}
+
+h2{
+    font-family: 'Righteous', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+     background: linear-gradient(to right, #3EA55C ,  #3EA55C, #B2AC4A, #B2AC4A); 
+            -webkit-text-fill-color: transparent; 
+            -webkit-background-clip: text; 
+}
+
+input:focus {
+    box-shadow: 0 0 0 3px #FADEB4 !important;
+}
+
+
+/* ----------- start media query ----------- */
+
+/* @media screen and (max-width:576px) {
+    
+} */
+/* @media screen and (min-width:577px) and (max-width:768px){
+
+} */
+/* @media screen and (min-width:769px) and (max-width:992px){
+    
+} */
+
+/* @media screen and (min-width:992px) and (max-width:1200px){
+    
+} */
+
+
+
+/* ----------- End media query ----------- */
+
