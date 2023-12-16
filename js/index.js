@@ -14,7 +14,7 @@ if(localStorage.getItem("bookmarks") !=null){
 
 
 function addBookmark(){
-    if(validationName() == true  && validationUrl() == true){
+    if((validationName() == true  && validationUrl() == true) || (validationUrl() == true && validationName() == true )){
         var bookmark = {
             name: bookmarkNameInput.value ,
             category: websiteUrlInput.value ,
@@ -28,6 +28,8 @@ function addBookmark(){
         clearForm();
     
         displayData();
+        bookmarkNameInput.classList.remove("is-valid");
+        websiteUrlInput.classList.remove("is-valid");
     }
     
 }
@@ -96,6 +98,7 @@ function setData(index){
     addBtn.classList.add("d-none");
 }
 function updateBookmark(){
+    if((validationName() == true  && validationUrl() == true) || (validationUrl() == true && validationName() == true )){
     var bookmark = {
         name: bookmarkNameInput.value ,
         category: websiteUrlInput.value ,
@@ -106,6 +109,9 @@ function updateBookmark(){
     updateBtn.classList.add("d-none");
     addBtn.classList.remove("d-none");
     clearForm ()
+    bookmarkNameInput.classList.remove("is-valid");
+    websiteUrlInput.classList.remove("is-valid");
+    }
 }
 
 function validationName(){
