@@ -14,19 +14,22 @@ if(localStorage.getItem("bookmarks") !=null){
 
 
 function addBookmark(){
-    var bookmark = {
-        name: bookmarkNameInput.value ,
-        category: websiteUrlInput.value ,
+    if(validationName() == true  && validationUrl() == true){
+        var bookmark = {
+            name: bookmarkNameInput.value ,
+            category: websiteUrlInput.value ,
+        }
+    
+        bookMarkList.push(bookmark);
+    
+    
+        localStorage.setItem("bookmarks",JSON.stringify(bookMarkList));
+    
+        clearForm();
+    
+        displayData();
     }
-
-    bookMarkList.push(bookmark);
-
-
-    localStorage.setItem("bookmarks",JSON.stringify(bookMarkList));
-
-    clearForm();
-
-    displayData();
+    
 }
 
 
@@ -61,7 +64,7 @@ function deleteProduct(elementNumber){
     displayData();
 }
 
-function searchProduct(){
+function searchBookmark(){
     var term =searchInput.value;
     var cartona = "";
 
@@ -103,4 +106,48 @@ function updateBookmark(){
     updateBtn.classList.add("d-none");
     addBtn.classList.remove("d-none");
     clearForm ()
+}
+
+function validationName(){
+    // console.log("hello");
+    var massageName = document.getElementById("massageName");
+    // var regexName = /^[A-Z][a-z]{2,8}$/
+    var regexName = /^[\w]{3}/
+    var text = bookmarkNameInput.value;
+    // console.log(text);
+    console.log( regexName.test(text) );
+    if(regexName.test(text)== true){
+        bookmarkNameInput.classList.add("is-valid");
+        bookmarkNameInput.classList.remove("is-invalid");
+        massageName.classList.add("d-none");
+        return true;
+
+    }else{
+        bookmarkNameInput.classList.add("is-invalid");
+        bookmarkNameInput.classList.remove("is-valid");
+        massageName.classList.remove("d-none");
+        return false;
+    }
+
+}
+
+function validationUrl(){
+    // console.log("hello");
+    var massageUrl = document.getElementById("massageUrl");
+    var regexUrl = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/;
+    var text = websiteUrlInput.value;
+    // console.log(text);
+    console.log( regexUrl.test(text) );
+    if(regexUrl.test(text)== true){
+        websiteUrlInput.classList.add("is-valid");
+        websiteUrlInput.classList.remove("is-invalid");
+        massageUrl.classList.add("d-none");
+        return true;
+
+    }else{
+        websiteUrlInput.classList.add("is-invalid");
+        websiteUrlInput.classList.remove("is-valid");
+        massageUrl.classList.remove("d-none");
+        return false;
+    }
 }

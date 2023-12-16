@@ -38,11 +38,13 @@
                               <h2 class="my-3"><i class="fa-solid fa-bookmark mx-2"></i>Bookmark your favorite sites<i class="fa-solid fa-bookmark mx-2"></i></h2>
                               <div class="text-start">
                                     <label for="bookmarkNameInput"><i class="fa-solid fa-book mx-3"></i>Site Name</label>
-                                    <input class="form-control my-2" type="text" id="bookmarkNameInput" placeholder="Bookmark Name" required>
+                                    <input class="form-control my-2" oninput="validationName()" type="text" id="bookmarkNameInput" placeholder="Bookmark Name" required>
+                                    <p class="alert alert-danger d-none" id="massageName">Site name must contain at least 3 characters ( even special character is accepted )</p>
                               </div>    
                               <div class="text-start">
                                     <label for="websiteUrlInput"><i class="fa-solid fa-link mx-3"></i>Site URL</label>
-                                    <input class="form-control my-2" type="url" id="websiteUrlInput" placeholder="Website URL" required>
+                                    <input class="form-control my-2" oninput="validationUrl()" type="url" id="websiteUrlInput" placeholder="Website URL" required>
+                                    <p class="alert alert-danger d-none" id="massageUrl">Site URL must be a valid one</p>
                               </div> 
                               <button onclick="addBookmark()" class="btn btn-danger m-3 px-3" id="addBtn">Add Bookmark</button>
                               <button onclick="updateBookmark()" class="btn btn-danger m-3 px-5 d-none" id="updateBtn">update</button>
@@ -50,7 +52,7 @@
                   </section>
                   <section id="index" class="container">
                         <div>
-                              <input id="searchInput" oninput="searchProduct()" type="text" class="form-control my-3 w-75 mx-auto" placeholder="Search">
+                              <input id="searchInput" oninput="searchBookmark()" type="text" class="form-control my-3 w-75 mx-auto" placeholder="Search">
                         </div>
                         <table class="table my-3 text-center">
                               <thead>
