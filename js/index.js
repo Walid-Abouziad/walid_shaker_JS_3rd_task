@@ -21,12 +21,12 @@ function addBookmark(){
         if(regexHttp.test(text)== true || regexSlash.test(text)== true ){
             var bookmark = {
                 name: bookmarkNameInput.value ,
-                category: websiteUrlInput.value ,
+                siteUrrl: websiteUrlInput.value ,
             }
-        }
+        }else
         var bookmark = {
             name: bookmarkNameInput.value ,
-            category: "//" + websiteUrlInput.value ,
+            siteUrrl: "//" + websiteUrlInput.value ,
         }
     
         bookMarkList.push(bookmark);
@@ -56,7 +56,7 @@ function displayData(){
         cartona += ` <tr>
         <td>${i+1}</td>
         <td>${bookMarkList[i].name}</td>
-        <td><a href="${bookMarkList[i].category}"><button class="btn btn-primary btn-sm px-3"><i class="fa-solid fa-eye me-2"></i>Visit</button></a></td>
+        <td><a href="${bookMarkList[i].siteUrrl}"><button class="btn btn-primary btn-sm px-3"><i class="fa-solid fa-eye me-2"></i>Visit</button></a></td>
         <td>
             <button class="btn btn-warning btn-sm" onclick="setData(${i})">Update</button>
             <button class="btn btn-danger btn-sm ms-2" onclick="deleteProduct(${i})">Delete</button>
@@ -84,7 +84,7 @@ function searchBookmark(){
             cartona += ` <tr>
             <td>${i+1}</td>
             <td>${bookMarkList[i].name}</td>
-            <td><a href="${bookMarkList[i].category}"><button class="btn btn-primary btn-sm px-3"><i class="fa-solid fa-eye me-2"></i>Visit</button></a></td>
+            <td><a href="${bookMarkList[i].siteUrrl}"><button class="btn btn-primary btn-sm px-3"><i class="fa-solid fa-eye me-2"></i>Visit</button></a></td>
             <td>
                 <button class="btn btn-warning btn-sm" onclick="setData(${i})">Update</button>
                 <button class="btn btn-danger btn-sm ms-2" onclick="deleteProduct(${i})">Delete</button>
@@ -102,7 +102,7 @@ function setData(index){
     indexUpdate = index ;
     var currentBookmark = bookMarkList[index];
     bookmarkNameInput.value = currentBookmark.name;
-    websiteUrlInput.value = currentBookmark.category;
+    websiteUrlInput.value = currentBookmark.siteUrrl;
     updateBtn.classList.remove("d-none");
     addBtn.classList.add("d-none");
 }
@@ -114,12 +114,12 @@ function updateBookmark(){
         if(regexHttp.test(text)== true || regexSlash.test(text)== true ){
             var bookmark = {
                 name: bookmarkNameInput.value ,
-                category: websiteUrlInput.value ,
+                siteUrrl: websiteUrlInput.value ,
             }
-        }
+        }else
         var bookmark = {
             name: bookmarkNameInput.value ,
-            category: "//" + websiteUrlInput.value ,
+            siteUrrl: "//" + websiteUrlInput.value ,
         }
     bookMarkList.splice(indexUpdate,1,bookmark);
     localStorage.setItem("bookmarks",JSON.stringify(bookMarkList));
