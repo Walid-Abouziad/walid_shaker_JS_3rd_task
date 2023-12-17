@@ -15,9 +15,18 @@ if(localStorage.getItem("bookmarks") !=null){
 
 function addBookmark(){
     if((validationName() == true  && validationUrl() == true) || (validationUrl() == true && validationName() == true )){
+        var regexHttp = /^https?:\/\//;
+        var regexSlash = /^\/\//;
+        var text = websiteUrlInput.value;
+        if(regexHttp.test(text)== true || regexSlash.test(text)== true ){
+            var bookmark = {
+                name: bookmarkNameInput.value ,
+                category: websiteUrlInput.value ,
+            }
+        }
         var bookmark = {
             name: bookmarkNameInput.value ,
-            category: websiteUrlInput.value ,
+            category: "//" + websiteUrlInput.value ,
         }
     
         bookMarkList.push(bookmark);
@@ -99,10 +108,19 @@ function setData(index){
 }
 function updateBookmark(){
     if((validationName() == true  && validationUrl() == true) || (validationUrl() == true && validationName() == true )){
-    var bookmark = {
-        name: bookmarkNameInput.value ,
-        category: websiteUrlInput.value ,
-    };
+        var regexHttp = /^https?:\/\//;
+        var regexSlash = /^\/\//;
+        var text = websiteUrlInput.value;
+        if(regexHttp.test(text)== true || regexSlash.test(text)== true ){
+            var bookmark = {
+                name: bookmarkNameInput.value ,
+                category: websiteUrlInput.value ,
+            }
+        }
+        var bookmark = {
+            name: bookmarkNameInput.value ,
+            category: "//" + websiteUrlInput.value ,
+        }
     bookMarkList.splice(indexUpdate,1,bookmark);
     localStorage.setItem("bookmarks",JSON.stringify(bookMarkList));
     displayData()
@@ -121,7 +139,7 @@ function validationName(){
     var regexName = /^[\w]{3}/
     var text = bookmarkNameInput.value;
     // console.log(text);
-    console.log( regexName.test(text) );
+    // console.log( regexName.test(text) );
     if(regexName.test(text)== true){
         bookmarkNameInput.classList.add("is-valid");
         bookmarkNameInput.classList.remove("is-invalid");
@@ -143,7 +161,7 @@ function validationUrl(){
     var regexUrl = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})(\.[a-zA-Z0-9]{2,})?/;
     var text = websiteUrlInput.value;
     // console.log(text);
-    console.log( regexUrl.test(text) );
+    // console.log( regexUrl.test(text) );
     if(regexUrl.test(text)== true){
         websiteUrlInput.classList.add("is-valid");
         websiteUrlInput.classList.remove("is-invalid");
