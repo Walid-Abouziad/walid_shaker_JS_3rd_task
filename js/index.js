@@ -14,7 +14,7 @@ if(localStorage.getItem("bookmarks") !=null){
 
 
 function addBookmark(){
-    if((validationName() == true  && validationUrl() == true) || (validationUrl() == true && validationName() == true )){
+    if((validationName() == true  & validationUrl() == true)){
         var regexHttp = /^https?:\/\//;
         var regexSlash = /^\/\//;
         var text = websiteUrlInput.value;
