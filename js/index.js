@@ -14,11 +14,11 @@ if(localStorage.getItem("bookmarks") !=null){
 
 
 function addBookmark(){
-    if((validationName() == true  & validationUrl() == true)){
+    if((validationName() == true  & validationUrl() == true & checkNameRep() != false & checkUrlRep()!=false)){
         var regexHttp = /^https?:\/\//;
         var regexSlash = /^\/\//;
         var text = websiteUrlInput.value;
-        if(regexHttp.test(text)== true || regexSlash.test(text)== true ){
+        if(regexHttp.test(text)== true | regexSlash.test(text)== true ){true
             var bookmark = {
                 name: bookmarkNameInput.value ,
                 siteUrrl: websiteUrlInput.value ,
@@ -107,7 +107,7 @@ function setData(index){
     addBtn.classList.add("d-none");
 }
 function updateBookmark(){
-    if((validationName() == true  && validationUrl() == true) || (validationUrl() == true && validationName() == true )){
+    if((validationName() == true  & validationUrl() == true)){
         var regexHttp = /^https?:\/\//;
         var regexSlash = /^\/\//;
         var text = websiteUrlInput.value;
@@ -174,4 +174,23 @@ function validationUrl(){
         massageUrl.classList.remove("d-none");
         return false;
     }
+}
+
+
+function checkNameRep(){
+
+    for( var i=0 ; i<bookMarkList.length  ; i++){
+        if(bookMarkList[i].name.toLowerCase().includes(bookmarkNameInput.value.toLowerCase())){
+            return false;
+    }    
+}
+}
+
+function checkUrlRep(){
+
+    for( var i=0 ; i<bookMarkList.length  ; i++){
+        if(bookMarkList[i].name.toLowerCase().includes(websiteUrlInput.value.toLowerCase())){
+            return false;
+    }    
+}
 }
